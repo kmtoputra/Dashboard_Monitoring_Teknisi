@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block judul %}Mode TV{% endblock %}
+{% block atas %}
+<div class="tv-atas">
+  <img class="brand-logo brand-logo-dark" src="{{ url_for('static', filename='img/logo-gpi-dark.png') }}" alt="GPI">
+  <div><div class="jam" id="jam">--:--</div><div class="tgl" id="tgl"></div></div>
+  <div class="hitung" id="hitung"></div>
+  <div class="tools">
+    <span class="status-pill" id="pillUpdate"><span class="gd"></span><span class="tx">memuat…</span></span>
+    <button class="ikon-btn" id="btnSuara" type="button" aria-label="Pengaturan suara alarm"></button>
+    <button class="ikon-btn" id="btnTema" type="button" aria-label="Ganti tema"></button>
+    <button class="btn btn-secondary btn-sm" id="btnLayar">Layar penuh</button>
+    <a class="btn btn-ghost btn-sm" href="/">Keluar TV</a>
+  </div>
+</div>
+<div id="banner"></div>
+{% endblock %}
+{% block isi %}<div class="tv-grid" id="grid"></div>{% endblock %}
+{% block kaki %}<div class="tv-bawah"><span id="halInfo"></span><span>Dashboard tidak menggantikan alarm bawaan mesin · {{ zona }}</span></div>
+<div class="tv-suara" id="ajakSuara"><div class="modal-card"><h3>Aktifkan suara alarm</h3><p class="muted">Browser hanya mengizinkan suara setelah layar diklik sekali. Alarm berbunyi selama ada alarm yang belum di-ack; jenis suara dan level diatur lewat ikon lonceng.</p><button class="btn btn-primary" id="btnAjak">Aktifkan suara</button><button class="btn btn-ghost btn-sm" id="btnTanpa">Lanjut tanpa suara</button></div></div>{% endblock %}
+{% block skrip %}<script src="{{ url_for('static', filename='js/kartu.js') }}?v={{ aset }}"></script>
+<script src="{{ url_for('static', filename='js/tv.js') }}?v={{ aset }}"></script>{% endblock %}

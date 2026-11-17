@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masuk · Monitoring DOCS · GPI</title>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon-gpi.png') }}">
+<script src="{{ url_for('static', filename='js/tema.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}?v={{ aset }}">
+</head>
+<body>
+<div class="login-wrap">
+  <form class="login-box" method="post" action="/login" autocomplete="on">
+    <div class="logo-tengah"><img class="brand-logo" src="{{ url_for('static', filename='img/logo-gpi.png') }}" alt="PT Generator Pasifik Indonesia">
+    <img class="brand-logo brand-logo-dark" src="{{ url_for('static', filename='img/logo-gpi-dark.png') }}" alt=""></div>
+    <h1>Monitoring DOCS</h1>
+    <p class="sub">Pemantauan realtime generator oksigen PCI DOCS</p>
+    {% if pesan %}<div class="login-err">{{ pesan }}</div>{% endif %}
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <input type="hidden" name="lanjut" value="{{ lanjut }}">
+    <div class="baris"><label class="f" for="u">Username</label><input id="u" name="username" autocomplete="username" required autofocus></div>
+    <div class="baris"><label class="f" for="p">Password</label><input id="p" name="password" type="password" autocomplete="current-password" required></div>
+    <button class="btn btn-primary" type="submit">Masuk</button>
+    <div class="login-foot">PT Generator Pasifik Indonesia · v{{ versi }}<br>Lupa password? Hubungi Admin dashboard.</div>
+  </form>
+</div>
+</body>
+</html>

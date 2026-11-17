@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block judul %}Ringkasan{% endblock %}
+{% block isi %}
+<div class="baris-judul">
+  <div><h1>Ringkasan unit</h1><div class="sub">Urut dari yang paling butuh perhatian. Klik kartu untuk detail.</div></div>
+</div>
+<div class="hitung" id="hitung"></div>
+<div class="grid-unit" id="grid"><div class="kosong">Memuat data…</div></div>
+<details class="blok-nonaktif" id="blokNonaktif" hidden>
+  <summary id="judulNonaktif">Unit belum terhubung</summary>
+  <div class="grid-mini" id="gridNonaktif"></div>
+</details>
+{% endblock %}
+{% block skrip %}<script src="{{ url_for('static', filename='js/kartu.js') }}?v={{ aset }}"></script>
+<script src="{{ url_for('static', filename='js/ringkasan.js') }}?v={{ aset }}"></script>{% endblock %}

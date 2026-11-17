@@ -1,0 +1,13 @@
+server/pengaturan_dashboard.ini
+bridge/pengaturan_mysql.ini
+server/.kunci_sesi
+log/
+backup/
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+.DS_Store
+Thumbs.db

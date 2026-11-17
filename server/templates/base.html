@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block judul %}Monitoring DOCS{% endblock %} · GPI</title>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon-gpi.png') }}">
+<script src="{{ url_for('static', filename='js/tema.js') }}?v={{ aset }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}?v={{ aset }}">
+{% block kepala %}{% endblock %}
+</head>
+<body class="hal-{{ halaman }}{% if halaman == 'tv' %} tv{% endif %}" data-peran="{{ pengguna.peran }}" data-username="{{ pengguna.username }}" data-zona="{{ zona }}" data-versi="{{ aset }}"{% block body_attr %}{% endblock %}>
+{% block atas %}
+<header class="topbar">
+  <a class="brand" href="/">
+    <img class="brand-logo" src="{{ url_for('static', filename='img/logo-gpi.png') }}" alt="PT Generator Pasifik Indonesia">
+    <img class="brand-logo brand-logo-dark" src="{{ url_for('static', filename='img/logo-gpi-dark.png') }}" alt="">
+    <span class="brand-teks"><b>Monitoring DOCS</b><small>Generator oksigen PCI · realtime</small></span>
+  </a>
+  <nav class="nav">
+    <a href="/" class="{{ 'aktif' if halaman in ('ringkasan', 'detail') else '' }}">Ringkasan</a>
+    <a href="/alarm" class="{{ 'aktif' if halaman == 'alarm' else '' }}">Alarm <span class="nav-badge" id="navAlarm" hidden></span></a>
+    <a href="/tv">Mode TV</a>
+    {% if pengguna.peran == 'Admin' %}<a href="/admin" class="{{ 'aktif' if halaman == 'admin' else '' }}">Admin</a>{% endif %}
+  </nav>
+  <div class="tools">
+    {% if not notif_aktif and pengguna.peran != 'Viewer' %}<span class="status-pill chip-uji" title="Notifikasi email/Telegram belum diaktifkan sampai ambang dikalibrasi. Alarm tetap tampil di dashboard."><span class="pjg">Notifikasi: </span>mode uji</span>{% endif %}
+    <span class="status-pill" id="pillUpdate"><span class="gd"></span><span class="tx">memuat…</span></span>
+    <button class="ikon-btn" id="btnSuara" type="button" aria-label="Pengaturan suara alarm"></button>
+    <button class="ikon-btn" id="btnTema" type="button" aria-label="Ganti tema"></button>
+    <a class="akun" href="/akun" title="Akun saya">{{ pengguna.nama }} · {{ pengguna.peran }}</a>
+    <a class="btn btn-ghost btn-sm" href="/logout" title="Keluar dari akun {{ pengguna.nama }} ({{ pengguna.peran }})">Keluar</a>
+  </div>
+</header>
+<div id="banner"></div>
+{% endblock %}
+<main class="wrap">{% block isi %}{% endblock %}</main>
+{% block kaki %}
+<footer class="kaki">Dashboard ini alat bantu pemantauan jarak jauh dan <b>tidak menggantikan alarm bawaan mesin</b>. Jam data = jam PC kantor ({{ zona }}). · PT Generator Pasifik Indonesia · v{{ versi }}</footer>
+{% endblock %}
+<div id="toast"></div>
+<script src="{{ url_for('static', filename='js/common.js') }}?v={{ aset }}"></script>
+<script src="{{ url_for('static', filename='js/suara.js') }}?v={{ aset }}"></script>
+{% block skrip %}{% endblock %}
+</body>
+</html>

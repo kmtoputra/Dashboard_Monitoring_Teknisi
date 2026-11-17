@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block judul %}Admin{% endblock %}
+{% block isi %}
+<div class="baris-judul"><div><h1>Admin</h1><div class="sub">Semua perubahan tercatat di Audit Log.</div></div></div>
+<div class="tabs" id="tabs">
+  <button data-tab="unit" class="aktif">RS &amp; Unit</button>
+  <button data-tab="aturan">Ambang Alarm</button>
+  <button data-tab="penerima">Penerima Notifikasi</button>
+  <button data-tab="pengguna">Pengguna</button>
+  <button data-tab="audit">Audit Log</button>
+  <button data-tab="sistem">Sistem</button>
+</div>
+<div id="isiTab"></div>
+{% endblock %}
+{% block skrip %}<script src="{{ url_for('static', filename='js/admin.js') }}?v={{ aset }}"></script>{% endblock %}

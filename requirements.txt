@@ -1,0 +1,5 @@
+flask>=3.0
+waitress>=3.0
+mysql-connector-python>=8.4
+openpyxl>=3.1
+xlwings>=0.30

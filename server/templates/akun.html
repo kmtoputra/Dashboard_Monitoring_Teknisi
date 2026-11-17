@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block judul %}Akun{% endblock %}
+{% block isi %}
+<div class="baris-judul"><div><h1>Akun saya</h1><div class="sub">{{ pengguna.nama }} ({{ pengguna.username }}) · peran {{ pengguna.peran }}</div></div></div>
+<div class="card" style="max-width:460px">
+  <div class="card-head"><div class="card-title">Ganti password</div></div>
+  <div class="baris"><label class="f">Password lama</label><input type="password" id="pwLama" autocomplete="current-password"></div>
+  <div class="baris" style="margin-top:10px"><label class="f">Password baru (min 8 karakter)</label><input type="password" id="pwBaru" autocomplete="new-password"></div>
+  <div class="baris" style="margin-top:10px"><label class="f">Ulangi password baru</label><input type="password" id="pwUlang" autocomplete="new-password"></div>
+  <div class="galat-form" id="pwGalat"></div>
+  <div style="margin-top:14px"><button class="btn btn-primary" id="btnPw">Simpan</button></div>
+</div>
+{% endblock %}
+{% block skrip %}<script src="{{ url_for('static', filename='js/akun.js') }}?v={{ aset }}"></script>{% endblock %}

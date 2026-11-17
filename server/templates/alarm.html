@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block judul %}Alarm{% endblock %}
+{% block isi %}
+<div class="baris-judul"><div><h1>Alarm</h1><div class="sub">Satu event per unit dan parameter (AL-06). Ack mencatat siapa, kapan, dan catatan.</div></div></div>
+<div class="card">
+  <div class="card-head"><div class="card-title">Alarm aktif</div><span class="muted kecil" id="jmlAktif"></span></div>
+  <div class="tabel-wrap" id="tabelAktif"></div>
+</div>
+<div class="card">
+  <div class="card-head"><div class="card-title">Riwayat</div></div>
+  <div class="filter">
+    <div><label class="f">Unit</label><select id="fUnit"><option value="">Semua unit</option></select></div>
+    <div><label class="f">Level</label><select id="fLevel"><option value="">Semua</option><option>Kritis</option><option>Peringatan</option><option>Offline</option></select></div>
+    <div><label class="f">Dari tanggal</label><input type="date" id="fDari"></div>
+    <div><label class="f">Sampai tanggal</label><input type="date" id="fSampai"></div>
+    <div style="min-width:auto"><button class="btn btn-primary btn-sm" id="btnFilter">Tampilkan</button></div>
+  </div>
+  <div class="tabel-wrap" id="tabelRiwayat"></div>
+  <div style="text-align:center;margin-top:10px"><button class="btn btn-secondary btn-sm" id="btnLagi" hidden>Muat lebih banyak</button></div>
+</div>
+{% endblock %}
+{% block skrip %}<script src="{{ url_for('static', filename='js/alarm.js') }}?v={{ aset }}"></script>{% endblock %}

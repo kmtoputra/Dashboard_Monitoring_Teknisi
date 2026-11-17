@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block judul %}Detail unit{% endblock %}
+{% block kepala %}<link rel="stylesheet" href="{{ url_for('static', filename='vendor/uPlot.min.css') }}">{% endblock %}
+{% block body_attr %} data-mesin="{{ mesin_id }}"{% endblock %}
+{% block isi %}
+<div class="baris-judul">
+  <div>
+    <div class="kecil"><a href="/">← Ringkasan</a></div>
+    <h1 id="judulUnit">Memuat…</h1>
+    <div class="sub" id="subUnit"></div>
+  </div>
+  <div class="aksi">
+    <span id="statusUnit"></span>
+    <button class="btn btn-secondary btn-sm" id="btnMaint" hidden>Mode Maintenance</button>
+  </div>
+</div>
+<div class="info-strip" id="infoStrip"></div>
+<div class="panel-grid" id="panel"></div>
+
+<div class="card bar-tren">
+  <div class="card-head">
+    <div class="card-title">Tren parameter</div>
+    <span class="mode-cat" id="modeCat"></span>
+    <div class="kanan">
+      <div class="seg" id="segRentang">
+        <button data-r="1j" class="aktif">1 jam</button><button data-r="6j">6 jam</button><button data-r="24j">24 jam</button><button data-r="7h">7 hari</button><button data-r="custom">Pilih…</button>
+      </div>
+      <button class="btn btn-secondary btn-sm" id="btnXlsx" title="Unduh data rentang ini (Excel)">Excel</button>
+      <button class="btn btn-secondary btn-sm" id="btnCsv" title="Unduh data rentang ini (CSV, pemisah ;)">CSV</button>
+    </div>
+  </div>
+  <div class="inline" id="formCustom" hidden>
+    <label class="kecil muted">Dari</label><input type="datetime-local" id="cDari">
+    <label class="kecil muted">Sampai</label><input type="datetime-local" id="cSampai">
+    <button class="btn btn-primary btn-sm" id="btnCustom">Tampilkan</button>
+  </div>
+</div>
+<div class="grid-widget" id="grafik"></div>
+
+<div class="dua-kolom">
+  <div class="card">
+    <div class="card-head"><div class="card-title">Riwayat status 24 jam</div></div>
+    <div class="timeline" id="timeline"></div>
+    <div class="skala-jam" id="skalaJam"></div>
+    <div class="legenda" id="legenda"></div>
+  </div>
+  <div class="card">
+    <div class="card-head"><div class="card-title">Data lain (baris terakhir)</div></div>
+    <div class="lain-grid" id="lain"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="card-title">Alarm unit ini</div><div class="kanan"><a class="kecil" id="linkAlarm" href="/alarm">Semua riwayat →</a></div></div>
+  <div class="tabel-wrap" id="tabelAlarm"></div>
+</div>
+{% endblock %}
+{% block skrip %}
+<script src="{{ url_for('static', filename='vendor/uPlot.iife.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/detail.js') }}?v={{ aset }}"></script>
+{% endblock %}
